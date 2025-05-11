@@ -4,6 +4,10 @@ const todoInput = document.getElementById("todo-input");
 const todoButton = document.getElementById("todo-button");
 const todoList = document.getElementById("todo-list");
 const todoCount = document.getElementById("todo-count");
+const btnActive = document.getElementById("btn-active");
+const btnAll = document.getElementById("btn-all");
+const btnCompleted = document.getElementById("btn-complete");
+const btnClear = document.getElementById("btn-clear");
 
 const API_URL = "https://681ddc25c1c291fa6631f229.mockapi.io/todosList";
 
@@ -155,6 +159,41 @@ todoList.addEventListener("change", async (e) => {
 
     renderTodoList(TODOS);
   }
+});
+
+btnActive.addEventListener("click", () => {
+  const activeTodos = TODOS.filter((todo) => !todo.completed);
+  renderTodoList(activeTodos);
+  todoCount.innerHTML = `${activeTodos.length} items left`;
+  btnActive.classList.add("bg-purple-500", "text-white");
+  btnAll.classList.remove("bg-purple-500", "text-white");
+  btnCompleted.classList.remove("bg-purple-500", "text-white");
+});
+
+btnCompleted.addEventListener("click", () => {
+  const activeTodos = TODOS.filter((todo) => todo.completed);
+  renderTodoList(activeTodos);
+  todoCount.innerHTML = `${activeTodos.length} items left`;
+  btnCompleted.classList.add("bg-purple-500", "text-white");
+  btnAll.classList.remove("bg-purple-500", "text-white");
+  btnActive.classList.remove("bg-purple-500", "text-white");
+});
+
+btnAll.addEventListener("click", () => {
+  const activeTodos = TODOS.filter((todo) => todo);
+  renderTodoList(activeTodos);
+  todoCount.innerHTML = `${activeTodos.length} items left`;
+  btnAll.classList.add("bg-purple-500", "text-white");
+  btnCompleted.classList.remove("bg-purple-500", "text-white");
+  btnActive.classList.remove("bg-purple-500", "text-white");
+});
+
+btnClear.addEventListener("click", () => {
+  const completedTodos = TODOS.filter((todo) => todo.completed);
+  completedTodos.forEach((todo) => {
+    romoveTodos(todo.id);
+  });
+  renderTodoList(TODOS);
 });
 
 getTodos().then((todos) => {
