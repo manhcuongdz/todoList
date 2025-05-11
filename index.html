@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<script src="main.js" defer></script>
+<body class="bg-gradient-to-r from-purple-100 to-blue-100 min-h-screen flex items-center justify-center p-4 font-sans">
+    <div class="w-full max-w-md bg-white rounded-xl shadow-xl overflow-hidden">
+        <div class="px-6 py-4 bg-gradient-to-r from-purple-500 to-blue-500">
+            <h1 class="text-3xl font-bold text-white text-center">My Todo List</h1>
+        </div>
+        
+        <div class="px-6 py-4 border-b border-gray-200">
+            <div class="flex items-center">
+                <input id="todo-input" type="text" placeholder="Add a new task..."  class="flex-1 py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button id="todo-button" disabled="true" class="ml-2 bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        
+        <ul class="divide-y divide-gray-200" id="todo-list">
+        </ul>
+        
+        <div class="px-6 py-4 bg-gray-50 text-gray-500 text-sm flex justify-between items-center">
+            <span id="todo-count">0 items left</span>
+            <div class="space-x-2">
+                <button class="px-2 py-1 rounded font-medium bg-purple-500 text-white">All</button>
+                <button class="px-2 py-1 rounded font-medium hover:bg-gray-200">Active</button>
+                <button class="px-2 py-1 rounded font-medium hover:bg-gray-200">Completed</button>
+            </div>
+            <button class="hover:text-purple-500">Clear Completed</button>
+        </div>
+    </div>
+</body>
+</html> 
